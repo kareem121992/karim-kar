@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { ORDER, LESSONS, CTF_LEVELS, EXERCISES, HACK_EXERCISES, CERTS, LEVELS, getLevel, getNextLevel } from "./data.js";
 import { signUp, logIn, logOut, watchAuth, loadProfile, saveProfile } from "./firebase.js";
 
@@ -356,7 +357,7 @@ export default function App() {
             </div>
             <form onSubmit={handleAuthSubmit}>
               <div style={{marginBottom:12}}>
-                <label style={{fontSize:11,color:C.text2,display:"block",marginBottom:6}}>البريد الإلكتروني</label>
+                <label style={{fontSize:11,color:C.text2,display:"block",marginBottom:6}}>البريد الإلك��روني</label>
                 <input type="email" required value={authEmail} onChange={e=>setAuthEmail(e.target.value)}
                   placeholder="you@example.com" dir="ltr"
                   style={{width:"100%",background:C.bg3,border:"1px solid "+C.border2,borderRadius:8,padding:"10px 14px",color:"#fff",fontSize:13,outline:"none",boxSizing:"border-box"}}/>
@@ -749,7 +750,7 @@ export default function App() {
                 <div style={{fontSize:22,fontWeight:900,color:"#fff",marginBottom:8}}>{ctfTimeLeft<=0 ? "انتهى الوقت!" : "انتهى المستوى!"}</div>
                 <div style={{fontFamily:"monospace",fontSize:16,color:CTF_LEVELS[ctfLevel].color,marginBottom:20}}>النتيجة: {ctfScore} / {CTF_LEVELS[ctfLevel].items.length}</div>
                 <button onClick={()=>setScreen("ctf")} style={{background:C.y+"20",border:"1px solid "+C.y+"50",borderRadius:8,padding:"10px 30px",fontFamily:"monospace",fontSize:13,color:C.y,cursor:"pointer"}}>
-                  ← العودة للمستويات
+                  ← الع��دة للمستويات
                 </button>
               </div>
             )}
@@ -826,6 +827,7 @@ export default function App() {
         )}
 
       </div>
+      <Analytics />
     </div>
   );
 }
